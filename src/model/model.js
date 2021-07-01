@@ -11,10 +11,10 @@ const model = (() => {
     const request = await fetch(
       `/.netlify/functions/token-hider/token-hider?q=${parse(input)}`
     ).catch((error) => console.log(error));
-    /*
+
     const data = await request.json().catch((error) => console.log(error));
-*/
-    return 2;
+
+    return data;
   };
 
   return { get };
