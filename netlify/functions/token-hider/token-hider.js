@@ -1,4 +1,4 @@
-import { env } from "process";
+const process = require("process");
 
 const handler = async function (event) {
   // get query parameters
@@ -8,7 +8,7 @@ const handler = async function (event) {
 
   // Get env var values defined in our Netlify site UI
   // this is secret, our frontend won't see this
-  const { API_URL, API_TOKEN } = env;
+  const { API_URL, API_TOKEN } = process.env;
 
   // First we make a call to match city name to latitude and longitude
   const coordsURL = `${API_URL}/weather?q=${q}&appid=${API_TOKEN}`;
@@ -41,4 +41,4 @@ const handler = async function (event) {
   return data;
 };
 
-export default { handler };
+module.exports = { handler };
