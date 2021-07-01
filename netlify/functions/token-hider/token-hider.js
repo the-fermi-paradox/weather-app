@@ -4,6 +4,8 @@ const handler = async function (event) {
   // get query parameters
   const { q } = event.queryStringParameters;
 
+  console.log(`Query parameters: ${q}`);
+
   // Get env var values defined in our Netlify site UI
   // this is secret, our frontend won't see this
   const { API_URL, API_TOKEN } = env;
@@ -20,6 +22,9 @@ const handler = async function (event) {
     .json()
     .catch((error) => console.log(error));
 
+  console.log(`coords:`);
+  console.log(coords);
+
   // Now we can make our real call to the API
   const URL = `${API_URL}/onecall?lat=${coords.lat}&lon=${coords.lon}&appid=${API_TOKEN}`;
 
@@ -29,6 +34,9 @@ const handler = async function (event) {
   }).catch((error) => console.log(error));
 
   const data = await request.json().catch((error) => console.log(error));
+
+  console.log("Data:");
+  console.log(data);
 
   return data;
 };
