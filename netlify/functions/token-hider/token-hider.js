@@ -10,8 +10,6 @@ const handler = async function (event) {
   // this is secret, our frontend won't see this
   const { API_TOKEN } = process.env;
 
-  return process.env.FUN;
-  /*
   // First we make a call to match city name to latitude and longitude
   const coordsURL = `https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${API_TOKEN}`;
 
@@ -19,12 +17,26 @@ const handler = async function (event) {
     method: "GET",
     mode: "cors",
   }).catch((error) => {
-    console.log(error);
+    throw error;
   });
+
+  if (coordsRequest.cod === "404") {
+    throw coordsRequest.message;
+  } else if (coordsRequest.cod === "401") {
+    throw coordsRequest.message;
+  }
+
+  console.log(coordsRequest);
 
   const newData = await coordsRequest.json().catch((error) => {
     console.log(error);
   });
+
+  if (newData.cod === "404") {
+    throw newData.message;
+  } else if (newData.cod === "401") {
+    throw newData.message;
+  }
 
   console.log(`coords:`);
   console.log(newData);
@@ -44,7 +56,7 @@ const handler = async function (event) {
   console.log("Data:");
   console.log(data);
 
-  return data;*/
+  return data;
 };
 
 module.exports = { handler };
