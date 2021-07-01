@@ -7,8 +7,8 @@ const model = (() => {
     const input = "Lubbock, TX";
     const request = await fetch(
       `/netlify/functions/token-hider/token-hider?q=${parse(input)}`
-    );
-    const data = await request.json();
+    ).catch((error) => console.log(error));
+    const data = await request.json().catch((error) => console.log(error));
 
     return data;
   };
