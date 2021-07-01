@@ -1,6 +1,9 @@
 const model = (() => {
   const parse = (str) => {
-    return str.split(",").map((item) => item.trim());
+    return str
+      .split(",")
+      .map((item) => item.trim())
+      .join(",");
   };
 
   const get = async () => {
