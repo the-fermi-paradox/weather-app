@@ -10,7 +10,7 @@ const handler = async function (event) {
   // this is secret, our frontend won't see this
   const { API_TOKEN } = process.env;
 
-  console.log(process.env.FUN);
+  return process.env.FUN;
   /*
   // First we make a call to match city name to latitude and longitude
   const coordsURL = `https://api.openweathermap.org/data/2.5/weather?q=${q}&appid=${API_TOKEN}`;
@@ -45,7 +45,6 @@ const handler = async function (event) {
   console.log(data);
 
   return data;*/
-  return 2;
 };
 
 module.exports = { handler };
