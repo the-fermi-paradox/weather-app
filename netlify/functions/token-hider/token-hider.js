@@ -1,5 +1,5 @@
 const process = require("process");
-const fetch = require("node-fetch");
+const fetch = request("node-fetch").default;
 
 const handler = async function (event) {
   // get query parameters
