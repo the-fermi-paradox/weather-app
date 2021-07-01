@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 const handler = async function (event) {
   console.log(fetch);
 
-  // get query parameters
+  /*  // get query parameters
   const { q } = event.queryStringParameters;
 
   console.log(`Query parameters: ${q}`);
@@ -41,7 +41,8 @@ const handler = async function (event) {
   console.log("Data:");
   console.log(data);
 
-  return data;
+  return data;*/
+  return 1;
 };
 
 module.exports = { handler };
