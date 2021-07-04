@@ -7,7 +7,7 @@ const model = (() => {
   };
 
   const get = async () => {
-    const input = "Lubbock, TX";
+    const input = "San Diego";
     const request = await fetch(
       `/.netlify/functions/token-hider/token-hider?q=${parse(input)}`
     ).catch((error) => console.log(error));
