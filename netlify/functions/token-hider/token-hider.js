@@ -45,7 +45,7 @@ const handler = async function (event) {
   // Now we can make our real call to the API
   // using the coordinates from the last call
   // to get the One Call data
-  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.coord.lat}&lon=${coords.coord.lon}&appid=${API_TOKEN}`;
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.body.coord.lat}&lon=${coords.body.coord.lon}&appid=${API_TOKEN}`;
   const response = await fetch(URL).catch((error) => { throw error });
   if (!response.ok) {
     return {
