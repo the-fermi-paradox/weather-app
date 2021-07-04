@@ -22,7 +22,7 @@ const handler = async function (event) {
       }
     }
 
-    const data = response.json().catch((error) => { throw error; }) ;
+    const data = await response.json().catch((error) => { throw error; }) ;
 
     if (data) {
       return {
@@ -54,12 +54,12 @@ const handler = async function (event) {
     }
   }
 
-  const data = await request.json().catch((error) => { throw error });
+  const data = await response.json().catch((error) => { throw error });
 
   if (data) {
     return {
       statusCode: 200,
-      body: data
+      body: JSON.stringify(data)
     };
   } else {
     return {
