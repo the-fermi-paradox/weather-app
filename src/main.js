@@ -6,3 +6,12 @@ const log = async () => {
 };
 
 log();
+
+const printDate = () => {
+  const now = new Date();
+  const element = document.getElementById("date");
+
+  element.textContent = now.getDate();
+}
+
+printDate();
