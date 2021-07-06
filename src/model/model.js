@@ -6,10 +6,10 @@ const model = (() => {
       .join(",");
   };
 
-  const get = async () => {
-    const input = "San Diego";
+  const get = async (input) => {
+    const str = parse(input);
     const request = await fetch(
-      `/.netlify/functions/token-hider/token-hider?q=${parse(input)}`
+      `/.netlify/functions/token-hider/token-hider?q=${parse(str)}`
     ).catch((error) => console.log(error));
 
     const data = await request.json().catch((error) => console.log(error));

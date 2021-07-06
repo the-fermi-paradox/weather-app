@@ -38,8 +38,9 @@ const handler = async function (event) {
   })().catch((error) => { throw error; });
 
   if (coords.statusCode !== 200) {
-    throw new Error(`ERROR ${coords.statusCode}: Data failed to be retrieved
+    return { new Error(`ERROR ${coords.statusCode}: Data failed to be retrieved
     Message was: ${coords.body}`);
+  }
   }
 
   // Now we can make our real call to the API
