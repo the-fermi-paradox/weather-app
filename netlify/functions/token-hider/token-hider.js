@@ -33,7 +33,8 @@ const handler = async function (event) {
   const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.body.coord.lat}&lon=${coords.body.coord.lon}&appid=${API_TOKEN}`;
   const response = await fetch(URL).catch((error) => { throw error; });
   const data = await response.json().catch((error) => { throw error; });
-
+  console.log(data);
+  console.log(data.cod);
   if (data.cod) {
     return {
       statusCode: data.cod,
