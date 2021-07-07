@@ -10,11 +10,11 @@ const model = (() => {
       `/.netlify/functions/token-hider/token-hider?q=${parse(str)}`,
     ).catch((error) => console.log(error));
 
-    if (request.status !== 200) {
-      console.error(`${request.status}: ${request.body}`);
+    if (request.statusCode !== 200) {
+      console.error(`${request.statusCode}: ${request.body}`);
     }
 
-    const data = await request.body.json().catch((error) => console.log(error));
+    const data = await request.json().catch((error) => console.log(error));
 
     return data;
   };

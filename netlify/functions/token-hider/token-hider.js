@@ -22,7 +22,7 @@ const handler = async function (event) {
   // If the coords has a cod on it, it's an error and we need to stop here.
   if (coords.cod) {
     return {
-      status: coords.cod,
+      statusCode: coords.cod,
       body: `error in first request: ${JSON.stringify(coords.message)}`,
     };
   }
@@ -36,12 +36,12 @@ const handler = async function (event) {
 
   if (data.cod) {
     return {
-      status: 200,
+      statusCode: 200,
       body: JSON.stringify(data),
     };
   }
   return {
-    status: data.cod,
+    statusCode: data.cod,
     body: `error in second request: ${JSON.stringify(data.message)}`,
   };
 };
