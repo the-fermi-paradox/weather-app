@@ -5,15 +5,14 @@ const model = (() => {
     .join(',');
 
   const get = async (input) => {
-    const str = parse(input);
     const request = await fetch(
-      `/.netlify/functions/token-hider/token-hider?q=${parse(str)}`,
+      `/.netlify/functions/token-hider/token-hider?q=${parse(input)}`,
     ).catch((error) => console.log(error));
 
     console.log(request);
 
-    if (request.statusCode !== 200) {
-      console.error(`${request.statusCode}: ${request.body}`);
+    if (request.status !== 200) {
+      console.error(`${request.status}: ${request.body}`);
     }
 
     const data = await request.json().catch((error) => console.log(error));
