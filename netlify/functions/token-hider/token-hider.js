@@ -36,13 +36,13 @@ const handler = async function (event) {
 
   if (data.cod) {
     return {
-      statusCode: 200,
-      body: data,
+      statusCode: data.cod,
+      body: `error in second request ${data.message}`,
     };
   }
   return {
-    statusCode: data.cod,
-    body: `error in second request: ${data.message}`,
+    statusCode: 200,
+    body: JSON.stringify(data),
   };
 };
 
