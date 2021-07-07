@@ -20,7 +20,7 @@ const handler = async function (event) {
   })().catch((error) => { throw error; });
 
   // If the coords has a cod on it, it's an error and we need to stop here.
-  if (coords.cod) {
+  if (coords.cod && coords.cod !== 200) {
     return {
       statusCode: coords.cod,
       body: `error in first request: ${coords.message}`,
@@ -30,12 +30,11 @@ const handler = async function (event) {
   // Now we can make our real call to the API
   // using the coordinates from the last call
   // to get the One Call data
-  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.body.coord.lat}&lon=${coords.body.coord.lon}&appid=${API_TOKEN}`;
+  const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.coord.lat}&lon=${coords.coord.lon}&appid=${API_TOKEN}`;
   const response = await fetch(URL).catch((error) => { throw error; });
   const data = await response.json().catch((error) => { throw error; });
-  console.log(data);
-  console.log(data.cod);
-  if (data.cod) {
+
+  if (data.cod && data.cod !== 200) {
     return {
       statusCode: data.cod,
       body: `error in second request ${data.message}`,
