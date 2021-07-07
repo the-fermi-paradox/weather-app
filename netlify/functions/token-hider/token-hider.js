@@ -23,7 +23,7 @@ const handler = async function (event) {
   if (coords.cod) {
     return {
       status: coords.cod,
-      message: `error in first request: ${JSON.stringify(coords.message)}`,
+      body: `error in first request: ${JSON.stringify(coords.message)}`,
     };
   }
 
