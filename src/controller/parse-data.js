@@ -1,10 +1,11 @@
-const parseData = (input, data) => {
+const parseData = (data, input) => {
+  console.log(data);
   if (input === 'high' || input === 'low') {
-    return data.daily.temp[input === 'high' ? 'max' : 'min'];
+    return data.daily[0].temp[input === 'high' ? 'max' : 'min'];
   }
 
   if (input === 'pop') {
-    return data.daily[input];
+    return data.daily[0][input];
   }
 
   return data.current[input];
