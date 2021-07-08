@@ -3,7 +3,7 @@ import model from '../model/model';
 import dataBlock from '../view/data-block';
 
 const control = async () => {
-  const data = await model.get();
+  const data = await model.get('San Diego');
   // Handle our main data section
   const section = document.getElementById('data-section');
   // Handle high and low
