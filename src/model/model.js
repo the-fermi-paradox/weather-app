@@ -23,4 +23,4 @@ const model = (() => {
   return { get };
 })();
 
-export { model };
+export default model;

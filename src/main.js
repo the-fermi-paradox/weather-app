@@ -1,11 +1,6 @@
-import { model } from './model/model';
+import control from './controller/control';
 
-const log = async () => {
-  const output = await model.get('San Diego').catch((error) => console.log(error));
-  console.log(output);
-};
-
-log();
+control();
 
 const printDate = () => {
   const now = new Date();
