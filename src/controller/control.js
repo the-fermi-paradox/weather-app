@@ -8,7 +8,7 @@ const parseTime = (utc) => {
   const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
   const minutes = date.getMinutes();
 
-  const signal = hours > 12 ? 'PM' : 'AM';
+  const signal = hours >= 12 ? 'PM' : 'AM';
   return `${hours}:${minutes} ${signal}`;
 };
 
