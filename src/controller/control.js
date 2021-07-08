@@ -5,10 +5,11 @@ import dataBlock from '../view/data-block';
 const parseTime = (utc) => {
   // UTC stored in seconds, we want ms for JavaScript
   const date = new Date(utc * 1000);
-  const hours = date.getHours();
+  const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
   const minutes = date.getMinutes();
 
-  return `${hours}:${minutes}`;
+  const signal = hours > 12 ? 'PM' : 'AM';
+  return `${hours}:${minutes} ${signal}`;
 };
 
 const control = async () => {
