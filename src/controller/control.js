@@ -9,7 +9,7 @@ const parseTime = (utc) => {
   const minutes = date.getMinutes();
 
   const signal = hours >= 12 ? 'PM' : 'AM';
-  return `${hours}:${minutes} ${signal}`;
+  return `${hours}:${minutes}${signal}`;
 };
 
 const control = async () => {
@@ -23,6 +23,13 @@ const control = async () => {
   const highBlock = dataBlock('High', high);
   const lowBlock = dataBlock('Low', low);
   section.append(highBlock, lowBlock);
+  // Handle wind and rain
+  const windSpeed = parseData(data, 'wind_speed').toFixed(1);
+  const probPrecip = parseData(data, 'pop');
+
+  const windBlock = dataBlock('Wind', `${windSpeed}mph`);
+  const rainBlock = dataBlock('Rain', `${probPrecip}%`);
+  section.append(windBlock, rainBlock);
   // Handle sunrise and sunset
   const sunrise = parseTime(parseData(data, 'sunrise'));
   const sunset = parseTime(parseData(data, 'sunset'));
@@ -30,13 +37,6 @@ const control = async () => {
   const riseBlock = dataBlock('Sunrise', sunrise);
   const setBlock = dataBlock('Sunset', sunset);
   section.append(riseBlock, setBlock);
-  // Handle wind and rain
-  const windSpeed = parseData(data, 'wind_speed');
-  const probPrecip = parseData(data, 'pop');
-
-  const windBlock = dataBlock('Wind Speed', windSpeed);
-  const rainBlock = dataBlock('Rain Chance', probPrecip);
-  section.append(windBlock, rainBlock);
 };
 
 export default control;

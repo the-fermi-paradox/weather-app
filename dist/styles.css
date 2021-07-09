@@ -126,6 +126,14 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
+.data__block:nth-child(odd) {
+  grid-row: 1;
+}
+
+.data__block:nth-child(even) {
+  grid-row: 2;
+}
+
 @media screen and (min-width: 678px) {
   .data {
     border-bottom: 0;
