@@ -13,9 +13,18 @@ const parseTime = (utc) => {
   return `${hours}:${minutes}${signal}`;
 };
 
+const kelvinToF = (K) => (
+  (K - 273.15) * 1.8000 + 32.00
+);
+
+const kelvinToC = (K) => (
+  K - 273.15
+);
+
 const control = async () => {
-  const unprocessedData = await model.get('San Diego');
+  const unprocessedData = await model.get('Lubbock');
   const data = parseData(unprocessedData);
+  console.log(data);
   // Handle our main data section
   const section = document.getElementById('data-section');
   // Handle high and low
