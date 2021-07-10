@@ -1,7 +1,6 @@
-const dayOrNight = (data) => {
-  const now = new Date();
-  const sunset = new Date(data.sunset);
-  const sunrise = new Date(data.sunrise);
+const dayOrNight = (dSunset, dSunrise, now = new Date()) => {
+  const sunset = new Date(dSunset);
+  const sunrise = new Date(dSunrise);
   if (now > sunrise && now < sunset) {
     return 'day';
   }

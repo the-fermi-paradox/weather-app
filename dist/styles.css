@@ -160,6 +160,9 @@ body {
   width: 100%;
   margin-top: 20px;
   display: flex;
+  flex-wrap: wrap;
+  height: 130px;
+  overflow: hidden;
   align-items: center;
   justify-content: center;
 }
@@ -168,7 +171,7 @@ body {
 
 .forecast__block {
   box-sizing: border-box;
-  max-width: 18vw;
+  width: 80px;
   display: flex;
   padding: 10px;
   margin: 1vw;

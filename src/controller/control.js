@@ -1,15 +1,25 @@
+import dayOrNight from './day-or-night';
 import parseData from '../model/parse-data';
 import model from '../model/model';
 import dataBlock from '../view/data-block';
 import pickIcon from '../view/pick-icon';
+import forecastBlock from '../view/forecast-block';
+
+const parseHours = (utc) => {
+  const date = new Date(utc);
+  const raw = date.getHours();
+  return raw > 12 ? raw - 12 : raw;
+};
+
+const AMPM = (utc) => (utc >= 12 ? 'PM' : 'AM');
 
 const parseTime = (utc) => {
   // UTC stored in seconds, we want ms for JavaScript
-  const date = new Date(utc * 1000);
-  const hours = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
+  const date = new Date(utc);
+  const hours = parseHours(utc);
   const minutes = date.getMinutes();
 
-  const signal = hours >= 12 ? 'PM' : 'AM';
+  const signal = AMPM(utc);
   return `${hours}:${minutes}${signal}`;
 };
 
@@ -28,6 +38,7 @@ const parseTemp = (temp) => {
 
 const control = async () => {
   const unprocessedData = await model.get('Lubbock');
+  console.log(unprocessedData);
   const data = parseData(unprocessedData);
   console.log(data);
   // Handle our main data section
@@ -67,10 +78,32 @@ const control = async () => {
   image.classList.add('summary__image');
   // Now let's generate an icon of our choice
   const icon = document.createElement('i');
-  icon.classList.add('wi', pickIcon(data));
+  const timeOfDay = dayOrNight(data.sunset, data.sunrise);
+  icon.classList.add('wi', pickIcon(timeOfDay, data.iconId));
   image.append(icon);
 
   summary.append(image, tempBlock);
+
+  // Handle the forecast block
+  const forecast = document.querySelector('.forecast');
+  for (let i = 0; i < 12; i += 1) {
+    const hourly = data.hourly[i];
+    const time = new Date(hourly.dt);
+    const hourlyTOD = dayOrNight(
+      data.sunset,
+      data.sunrise,
+      time,
+    );
+    const temp = parseTemp(hourly.temp);
+    const img = pickIcon(hourlyTOD, hourly.iconId);
+    const hours = parseHours(time);
+    const block = forecastBlock(
+      `${hours}${AMPM(time)}`,
+      img,
+      temp,
+    );
+    forecast.append(block);
+  }
 };
 
 export default control;

@@ -1,5 +1,3 @@
-import dayOrNight from '../controller/day-or-night';
-
-const pickIcon = (data) => `wi-owm-${dayOrNight(data)}-${data.iconId}`;
+const pickIcon = (timeOfDay, id) => `wi-owm-${timeOfDay}-${id}`;
 
 export default pickIcon;
