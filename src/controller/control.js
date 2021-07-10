@@ -1,4 +1,4 @@
-import parseData from './parse-data';
+import parseData from '../model/parse-data';
 import model from '../model/model';
 import dataBlock from '../view/data-block';
 
@@ -13,30 +13,25 @@ const parseTime = (utc) => {
 };
 
 const control = async () => {
-  const data = await model.get('San Diego');
+  const unprocessedData = await model.get('San Diego');
+  const data = parseData(unprocessedData);
   // Handle our main data section
   const section = document.getElementById('data-section');
   // Handle high and low
-  const high = parseData(data, 'high');
-  const low = parseData(data, 'low');
-
-  const highBlock = dataBlock('High', high);
-  const lowBlock = dataBlock('Low', low);
+  const highBlock = dataBlock('High', data.high);
+  const lowBlock = dataBlock('Low', data.low);
   section.append(highBlock, lowBlock);
   // Handle wind and rain
-  const windSpeed = parseData(data, 'wind_speed').toFixed(1);
-  const probPrecip = parseData(data, 'pop');
-
-  const windBlock = dataBlock('Wind', `${windSpeed}mph`);
-  const rainBlock = dataBlock('Rain', `${probPrecip}%`);
+  const windBlock = dataBlock('Wind', `${data.windSpeed}mph`);
+  const rainBlock = dataBlock('Rain', `${data.rain}%`);
   section.append(windBlock, rainBlock);
   // Handle sunrise and sunset
-  const sunrise = parseTime(parseData(data, 'sunrise'));
-  const sunset = parseTime(parseData(data, 'sunset'));
-
-  const riseBlock = dataBlock('Sunrise', sunrise);
-  const setBlock = dataBlock('Sunset', sunset);
+  const riseBlock = dataBlock('Sunrise', parseTime(data.sunrise));
+  const setBlock = dataBlock('Sunset', parseTime(data.sunset));
   section.append(riseBlock, setBlock);
+
+  // Handle our header display
+  const summary = document.getElementById('summary');
 };
 
 export default control;
