@@ -1,6 +1,7 @@
 import parseData from '../model/parse-data';
 import model from '../model/model';
 import dataBlock from '../view/data-block';
+import pickIcon from '../view/pick-icon';
 
 const parseTime = (utc) => {
   // UTC stored in seconds, we want ms for JavaScript
@@ -32,6 +33,30 @@ const control = async () => {
 
   // Handle our header display
   const summary = document.getElementById('summary');
+  // First we make the main temperature display
+  const tempBlock = document.createElement('div');
+  tempBlock.classList.add('summary__temp');
+
+  const tempText = document.createElement('span');
+  tempText.classList.add('temp');
+  tempText.textContent = data.temp;
+
+  const weather = document.createElement('span');
+  weather.classList.add('temp__subtext');
+  weather.textContent = data.weather;
+
+  tempBlock.append(tempText, weather);
+  // Our images are generated via class names
+  // which actively reflect the results of the
+  // Open Weather Map API
+  const image = document.createElement('div');
+  image.classList.add('summary__image');
+  // Now let's generate an icon of our choice
+  const icon = document.createElement('i');
+  icon.classList.add(pickIcon());
+  image.append(icon);
+
+  summary.append(tempBlock, image);
 };
 
 export default control;
