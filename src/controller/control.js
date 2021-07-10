@@ -21,6 +21,11 @@ const kelvinToC = (K) => (
   K - 273.15
 );
 
+const parseTemp = (temp) => {
+  const val = kelvinToF(temp).toFixed(0);
+  return `${val}°F`;
+};
+
 const control = async () => {
   const unprocessedData = await model.get('Lubbock');
   const data = parseData(unprocessedData);
@@ -28,8 +33,8 @@ const control = async () => {
   // Handle our main data section
   const section = document.getElementById('data-section');
   // Handle high and low
-  const highBlock = dataBlock('High', data.high);
-  const lowBlock = dataBlock('Low', data.low);
+  const highBlock = dataBlock('High', parseTemp(data.high));
+  const lowBlock = dataBlock('Low', parseTemp(data.low));
   section.append(highBlock, lowBlock);
   // Handle wind and rain
   const windBlock = dataBlock('Wind', `${data.windSpeed}mph`);
@@ -48,7 +53,7 @@ const control = async () => {
 
   const tempText = document.createElement('span');
   tempText.classList.add('temp');
-  tempText.textContent = data.temp;
+  tempText.textContent = parseTemp(data.temp);
 
   const weather = document.createElement('span');
   weather.classList.add('temp__subtext');
