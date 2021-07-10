@@ -5,21 +5,21 @@ import dataBlock from '../view/data-block';
 import pickIcon from '../view/pick-icon';
 import forecastBlock from '../view/forecast-block';
 
-const parseHours = (utc) => {
-  const date = new Date(utc);
+const parseHours = (date) => {
   const raw = date.getHours();
+  if (raw === 0) return 12;
   return raw > 12 ? raw - 12 : raw;
 };
 
-const AMPM = (utc) => (utc >= 12 ? 'PM' : 'AM');
+const AMPM = (date) => (date.getHours() >= 12 ? 'PM' : 'AM');
 
 const parseTime = (utc) => {
   // UTC stored in seconds, we want ms for JavaScript
   const date = new Date(utc);
-  const hours = parseHours(utc);
+  const hours = parseHours(date);
   const minutes = date.getMinutes();
 
-  const signal = AMPM(utc);
+  const signal = AMPM(date);
   return `${hours}:${minutes}${signal}`;
 };
 
