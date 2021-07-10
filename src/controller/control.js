@@ -24,7 +24,7 @@ const control = async () => {
   section.append(highBlock, lowBlock);
   // Handle wind and rain
   const windBlock = dataBlock('Wind', `${data.windSpeed}mph`);
-  const rainBlock = dataBlock('Rain', `${data.rain}%`);
+  const rainBlock = dataBlock('Rain', `${data.pop}%`);
   section.append(windBlock, rainBlock);
   // Handle sunrise and sunset
   const riseBlock = dataBlock('Sunrise', parseTime(data.sunrise));
