@@ -53,10 +53,10 @@ const control = async () => {
   image.classList.add('summary__image');
   // Now let's generate an icon of our choice
   const icon = document.createElement('i');
-  icon.classList.add(pickIcon());
+  icon.classList.add('wi', pickIcon(data));
   image.append(icon);
 
-  summary.append(tempBlock, image);
+  summary.append(image, tempBlock);
 };
 
 export default control;

@@ -11,7 +11,7 @@ const parseData = (data) => {
   flatObject.sunset = data.current.sunset;
   flatObject.weather = data.current.weather[0].main;
   flatObject.windSpeed = data.current.wind_speed;
-  flatObject.iconId = data.current.weather[0].icon;
+  flatObject.iconId = data.current.weather[0].id;
   // These arrays will need to be flattened
   // as they're being used ...
   flatObject.hourly = data.hourly;

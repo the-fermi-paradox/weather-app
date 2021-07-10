@@ -1,7 +1,5 @@
-const pickIcon = (id, sunrise, sunset) => {
-  const now = new Date();
-  const dayOrNight = now > sunrise && now < sunset ? 'day' : 'night';
-  return `wi-owm-${dayOrNight}-${id}`;
-};
+import dayOrNight from '../controller/day-or-night';
+
+const pickIcon = (data) => `wi-owm-${dayOrNight(data)}-${data.iconId}`;
 
 export default pickIcon;
