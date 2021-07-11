@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="./weather-css/weather-icons.min.css" />
   </head>
   <body>
-    <main class="main">
+    <div class="loader">
+      <div class="loader__text">
+        <i class="wi wi-refresh"></i> Loading...
+      </div>  
+    </div>
+    <main class="main loading">
       <header class="header">
         <input class="header__city" type="text" value="Lubbock"></input>
         <div id="date" class="header__date">June 30th, 2021</div>

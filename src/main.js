@@ -2,9 +2,14 @@ import control from './controller/control';
 import reset from './controller/reset';
 import model from './model/model';
 import parseData from './model/parse-data';
+import hideLoader from './view/hide-loader';
 
 model.get('Lubbock')
   .then((response) => {
+    if (response.statusCode !== 200) {
+      return;
+    }
+    hideLoader();
     const data = parseData(response.body);
     control(data);
   })
