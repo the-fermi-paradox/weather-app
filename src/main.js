@@ -3,7 +3,7 @@ import reset from './controller/reset';
 import model from './model/model';
 import parseData from './model/parse-data';
 
-control();
+control(model.get('Lubbock'));
 
 const printDate = () => {
   const now = new Date();
