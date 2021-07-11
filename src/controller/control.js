@@ -36,11 +36,7 @@ const parseTemp = (temp) => {
   return `${val}°F`;
 };
 
-const control = async (city = "Lubbock") => {
-  const unprocessedData = await model.get(city);
-  console.log(unprocessedData);
-  const data = parseData(unprocessedData);
-  console.log(data);
+const control = async (data) => {
   // Handle our main data section
   const section = document.getElementById('data-section');
   // Handle high and low

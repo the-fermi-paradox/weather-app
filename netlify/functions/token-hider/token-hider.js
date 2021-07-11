@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const handler = async function (event) {
+const handler = async (event) => {
   // get query parameters
   const q = event.queryStringParameters.q || 'Lubbock';
 

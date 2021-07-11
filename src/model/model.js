@@ -11,13 +11,18 @@ const model = (() => {
 
     console.log(request);
 
-    if (request.status !== 200) {
-      console.error(`${request.status}: ${request.body}`);
+    if (!request || request.statusCode !== 200) {
+      return {
+        statusCode: request.statusCode,
+        body: request.body,
+      };
     }
-
     const data = await request.json().catch((error) => console.log(error));
 
-    return data;
+    return {
+      statusCode: 200,
+      body: data,
+    };
   };
 
   return { get };
