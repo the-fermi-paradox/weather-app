@@ -40,6 +40,14 @@ body {
   align-content: flex-start;
 }
 
+@media screen and (min-width: 1200px) {
+  .main {
+    width: 75vw;
+    margin-left: 12.5vw;
+    margin-right: 12.5vw;
+  }
+}
+
 @media screen and (min-width: 1522px) {
   .main {
     width: 50vw;
@@ -47,6 +55,7 @@ body {
     margin-right: 25vw;
   }
 }
+
 
 /* Header */
 
