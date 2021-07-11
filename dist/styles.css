@@ -247,15 +247,27 @@ body {
     transform: rotate(0);
   }
   100% {
-    transform: rotate(1turn);
+    transform: rotate(360deg);
   }
 }
 
 .wi-refresh {
-  animation: spin 2s infinite;
+  animation: spin 1s linear infinite;
+}
+
+.small-loader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.small-loader__text {
+  font-size: 1.5rem;
+  display: flex;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 

@@ -30,13 +30,14 @@ const input = document.querySelector('.header__city');
 input.addEventListener('change', async () => {
   input.classList.remove('red');
   const val = input.value;
-  console.log(loading);
   loading.resetText();
+  loading.showIcon();
   loading.showSmallLoader();
 
   const unprocessedData = await model.get(val);
   if (unprocessedData.statusCode !== 200) {
     input.classList.add('red');
+    loading.hideIcon();
     loading.printError();
     return;
   }
