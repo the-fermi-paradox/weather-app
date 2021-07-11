@@ -36,8 +36,8 @@ const parseTemp = (temp) => {
   return `${val}°F`;
 };
 
-const control = async () => {
-  const unprocessedData = await model.get('Lubbock');
+const control = async (city = "Lubbock") => {
+  const unprocessedData = await model.get(city);
   console.log(unprocessedData);
   const data = parseData(unprocessedData);
   console.log(data);

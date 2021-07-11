@@ -1,4 +1,5 @@
 import control from './controller/control';
+import reset from './controller/reset';
 
 control();
 
@@ -10,3 +11,10 @@ const printDate = () => {
 };
 
 printDate();
+
+const input = document.querySelector('.header__city');
+
+input.addEventListener('change', () => {
+  reset();
+  control(input.value);
+});
