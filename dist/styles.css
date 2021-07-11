@@ -39,7 +39,7 @@ body {
   align-content: flex-start;
 }
 
-@media screen and (min-width: 1258px) {
+@media screen and (min-width: 1522px) {
   .main {
     width: 50vw;
     margin-left: 25vw;
@@ -60,6 +60,10 @@ body {
   margin: 0;
 }
 
+.header__search {
+  margin-left: auto;
+}
+
 /* Summary */
 
 .summary {
@@ -71,7 +75,7 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-@media screen and (min-width: 678px) {
+@media screen and (min-width: 700px) {
   .summary {
     width: 50%;
     border-bottom: 0;
@@ -95,7 +99,7 @@ body {
   padding-bottom: 0;
 }
 
-@media screen and (min-width: 678px) {
+@media screen and (min-width: 700px) {
   .summary__image {
     flex-grow: 0;
   }
@@ -134,7 +138,7 @@ body {
   grid-row: 2;
 }
 
-@media screen and (min-width: 678px) {
+@media screen and (min-width: 700px) {
   .data {
     border-bottom: 0;
     border-left: 1px solid #ddd;
@@ -167,6 +171,13 @@ body {
   justify-content: center;
 }
 
+@media screen and (min-width: 1250px) {
+  .forecast {
+    height: 160px;
+    overflow: visible;
+  }
+}
+
 /* -- Forecast Block -- */
 
 .forecast__block {
@@ -179,6 +190,12 @@ body {
   align-items: center;
   border-radius: 10px;
   background-color: rgba(39, 13, 145, 0.486);
+}
+
+@media screen and (max-width: 700px) {
+  .forecast__block {
+    width: 60px;
+  }
 }
 
 .forecast__icon {
