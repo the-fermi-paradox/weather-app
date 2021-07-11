@@ -16,8 +16,15 @@
     </div>
     <main class="main loading">
       <header class="header">
-        <input class="header__city" type="text" value="Lubbock"></input>
-        <div id="date" class="header__date">June 30th, 2021</div>
+        <div class="header__container">
+          <input class="header__city" type="text" value="Lubbock"></input>
+          <div id="date" class="header__date">June 30th, 2021</div>
+        </div>
+        <div class="small-loader hidden">
+          <div class="loader__text">
+            <i class="wi wi-refresh"></i><span id="text"> Loading...</span>
+          </div>
+        </div>
       </header>
       <section class="section summary">
         <div id="summary" class="summary__content-container">
