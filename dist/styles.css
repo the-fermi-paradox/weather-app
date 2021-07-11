@@ -58,6 +58,10 @@ body {
   font-size: 2.32rem;
   padding: 0;
   margin: 0;
+  background: inherit;
+  border: none;
+  width: 100%;
+  color: inherit;
 }
 
 .header__search {
