@@ -24,6 +24,7 @@ body {
   margin: 0;
 }
 
+
 /* Sections */
 
 .main {
@@ -209,4 +210,8 @@ body {
 
 .wi {
   transform: scaleX(-1);
+}
+
+.red {
+  color: #F7768E;
 }

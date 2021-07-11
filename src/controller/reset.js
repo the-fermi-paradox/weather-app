@@ -6,9 +6,6 @@ const reset = () => {
   const forecast = document.querySelector('.forecast');
   const data = document.getElementById('data-section');
 
-  console.log(summary);
-  console.log(forecast);
-  console.log(data);
   clearNodes(summary, forecast, data);
 };
 

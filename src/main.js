@@ -22,10 +22,12 @@ printDate();
 const input = document.querySelector('.header__city');
 
 input.addEventListener('change', async () => {
+  input.classList.remove('red');
   const val = input.value;
   const unprocessedData = await model.get(val);
   if (unprocessedData.statusCode !== 200) {
-    console.error(`${unprocessedData.statusCode} ${unprocessedData.body}`);
+    input.classList.add('red');
+    console.error(`${unprocessedData.statusCode}`);
     return;
   }
 
