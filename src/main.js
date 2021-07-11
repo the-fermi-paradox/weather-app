@@ -3,7 +3,12 @@ import reset from './controller/reset';
 import model from './model/model';
 import parseData from './model/parse-data';
 
-control(model.get('Lubbock'));
+model.get('Lubbock')
+  .then((response) => {
+    const data = parseData(response.body);
+    control(data);
+  })
+  .catch((error) => console.error(error));
 
 const printDate = () => {
   const now = new Date();
@@ -24,7 +29,7 @@ input.addEventListener('change', async () => {
     return;
   }
 
-  const data = parseData(unprocessedData);
+  const data = parseData(unprocessedData.body);
   reset();
   control(data);
 });

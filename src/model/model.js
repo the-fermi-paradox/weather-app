@@ -9,11 +9,9 @@ const model = (() => {
       `/.netlify/functions/token-hider/token-hider?q=${parse(input)}`,
     ).catch((error) => console.log(error));
 
-    console.log(request);
-
-    if (!request || request.statusCode !== 200) {
+    if (request.status && request.status !== 200) {
       return {
-        statusCode: request.statusCode,
+        statusCode: request.status,
         body: request.body,
       };
     }
