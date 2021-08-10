@@ -85,7 +85,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
   border-bottom: 1px solid #ddd;
 }
@@ -270,4 +269,3 @@ body {
 .hidden {
   display: none !important;
 }
-
