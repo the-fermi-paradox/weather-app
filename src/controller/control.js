@@ -17,7 +17,8 @@ const parseTime = (utc) => {
   // UTC stored in seconds, we want ms for JavaScript
   const date = new Date(utc);
   const hours = parseHours(date);
-  const minutes = date.getMinutes();
+  const preMinutes = date.getMinutes();
+  const minutes = preMinutes < 10 ? `0${preMinutes}` : preMinutes;
 
   const signal = AMPM(date);
   return `${hours}:${minutes}${signal}`;
